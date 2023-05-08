@@ -1,1 +1,1 @@
-![lego](https://github.com/PatrioticDedicated/Result/blob/main/gif/lego.gif))
+![lego](https://github.com/PatrioticDedicated/Result/blob/main/gif/lego.gif)
