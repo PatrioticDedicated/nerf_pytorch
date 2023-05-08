@@ -1,1 +1,1 @@
-![lego](https://raw.githubusercontent.com/PatrioticDedicated/Result/main/gif/lego.gif?token=GHSAT0AAAAAACCIBK4TWL4GU75IWLNYSAQKZCYUPJA)
+![image](https://github.com/PatrioticDedicated/Result/blob/main/gif/lego.gif)
