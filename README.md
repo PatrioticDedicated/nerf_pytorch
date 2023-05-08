@@ -1,6 +1,6 @@
 NeRF
 =====
-The NERF(https://arxiv.org/pdf/2003.08934.pdf)(Neural Radiance Fields) is restructured according to pytorch_template.
+The [NeRF](https://arxiv.org/pdf/2003.08934.pdf)(Neural Radiance Fields) is restructured according to pytorch_template.
 # nnn
 ## nnnn
 
