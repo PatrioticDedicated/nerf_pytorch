@@ -1,7 +1,6 @@
 NeRF
 =====
-nerf
-----
+The NERF(Neural Radiance Fields) is restructured according to pytorch_template.
 # nnn
 ## nnnn
 
