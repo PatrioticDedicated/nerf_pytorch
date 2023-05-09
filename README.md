@@ -91,6 +91,8 @@ $$
 
 ###第四步 体渲染
 
+ 输入：一条光线上的 <span class="ztext-math" data-eeimg="1" data-tex="c(r,g,b),\sigma">c(r,g,b),\sigma</span>                  输出：渲染后的 RGB 值</p><p data-pid="_OG4M6RL">在传统的体渲染方法[2]中，通过吸收发射模型进行光强的计算：</p><p data-pid="pIIpUeXs"><span class="ztext-math" data-eeimg="1" data-tex=" I(D) = I_0T(D) + ∫^D_0g(s)T^{&#39;}(s)ds "> I(D) = I_0T(D) + ∫^D_0g(s)T^{&#39;}(s)ds </span> </p><p data-pid="bZvjLicZ">其中 <span class="ztext-math" data-eeimg="1" data-tex="T^{&#39;}(s) = exp(-∫^D_s\tau(x)dx)">T^{&#39;}(s) = exp(-∫^D_s\tau(x)dx)</span>，这一项被称为透明度，吸收发射模型等式第一项表示来自背景的光，乘以空间的透明度，这一部分表示<b>光照经过介质后被吸收剩下的光强</b>，第二项是源项 g（s)（表示介质通过外部照明的发射或反射增加的光）乘以位置 s 到眼睛位置 D 的透明度（即 <span class="ztext-math" data-eeimg="1" data-tex="T^{&#39;}(s)">T^{&#39;}(s)</span>）在<b>每个位置 s 贡献的积分</b>（注意这个思想，我们使用一系列的点模拟一条光线，那么每个点都有它的属性）。在 NeRF 中吸收发射模型等式第一项视作背景光，忽略不计，通过坐标换算之后得到：</p><p data-pid="V-eNyeLk">​                                     <span class="ztext-math" data-eeimg="1" data-tex="I(0)=∫_0^∞g(s)T^{′}(0,s)ds=∫_0^∞T^{′}(0,t)τ(t)c(t)dt ">I(0)=∫_0^∞g(s)T^{′}(0,s)ds=∫_0^∞T^{′}(0,t)τ(t)c(t)dt </span>， </p><p data-pid="2woAClyB">​                                                  
+
 
 
 ![llff](https://github.com/PatrioticDedicated/Result/blob/main/gif/llff.gif)
