@@ -124,6 +124,10 @@ $$
 
 
 # Training
+Please see each subsection for training on different datasets. Available training datasets:
+* Blender (Realistic Synthetic 360)
+* LLFF (Real Forward-Facing)
+* Your own data (Forward-Facing/360 inward-facing)
 
 
 ![llff](https://github.com/PatrioticDedicated/Result/blob/main/gif/llff.gif)
