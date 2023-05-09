@@ -163,17 +163,20 @@ python eval.py \
    
 IMPORTANT : Don't forget to add --spheric_poses if the model is trained under --spheric setting!
 
-It will create folder results/{dataset_name}/{scene_name} and run inference on all test data, finally create a gif out of them.
+It will create folder results/{dataset_name}/{scene_name} and run inference on all test data, finally create a gif out of them.  
 
 Example of lego scene using pretrained model 
-![lego](https://user-images.githubusercontent.com/61340340/236772533-a7d382ab-2155-47f1-8c57-87efa8949ec2.gif)
+
+![lego](https://user-images.githubusercontent.com/61340340/236772533-a7d382ab-2155-47f1-8c57-87efa8949ec2.gif)  
 
 Example of fern scene using pretrained model:
+
 ![llff](https://github.com/PatrioticDedicated/Result/blob/main/gif/llff.gif)
 
 # Mesh
 
 Use .py to create
+
 ![mesh](https://github.com/PatrioticDedicated/nerf_pytorch/assets/61340340/9b419d19-c593-47b5-974f-d519f1df792e)
 
 
