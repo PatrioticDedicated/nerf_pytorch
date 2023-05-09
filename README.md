@@ -130,6 +130,12 @@ Please see each subsection for training on different datasets. Available trainin
 * LLFF (Real Forward-Facing)
 * Your own data (Forward-Facing/360 inward-facing)
 
+## blender
+
+## llff
+
+## your own data
+
 
 
 
