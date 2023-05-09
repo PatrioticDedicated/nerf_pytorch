@@ -124,7 +124,7 @@ $$T_i=\exp \left(-\sum_{j=1}^{i-1} \sigma_i \delta_i\right)$$表示前 $\mathrm{
 $\hat{\mathbf{C}} = \mathbf{c}_1 \alpha_1  +\mathbf{c}_2 \alpha_2\left(1-\alpha_1\right)+\mathbf{c}_3 \alpha_3\left(1-\alpha_1\right)\left(1-\alpha_2\right)+.... +$  
 $\mathbf{c}_n \alpha_n \left(1-\alpha_1\right)\left(1-\alpha_2\right)$
 
-$\left(1-\alpha_{n-1}\right)&
+$\left(1-\alpha_{n-1}\right)$
 
 
 # Training
