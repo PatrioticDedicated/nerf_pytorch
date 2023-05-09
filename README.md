@@ -32,19 +32,19 @@ MLP的输入是一系列空间坐标的点 $x(x, y, z)$ ，这些点同时具有
 
 其中不同坐标系下的坐标有以下的转换关系：相机中的坐标 $\left[X_c, Y_c, Z_c\right]^T$ 和三维世界的坐标 $[X, Y, Z]^T$  
 $\left[\begin{array}{l}
-X_c \\
-Y_c \\
-Z_c \\
+X_c \\\
+Y_c \\\
+Z_c \\\
 1
 \end{array}\right]=\left[\begin{array}{llll}
-r_{11} & r_{12} & p_{13} & t_x \\
-r_{21} & r_{22} & r_{23} & t_y \\
-r_{31} & r_{32} & r_{33} & t_z \\
+r_{11} & r_{12} & p_{13} & t_x \\\
+r_{21} & r_{22} & r_{23} & t_y \\\
+r_{31} & r_{32} & r_{33} & t_z \\\
 0 & 0 & 0 & 1
 \end{array}\right]\left[\begin{array}{l}
-X \\
-Y \\
-Z \\
+X \\\
+Y \\\
+Z \\\
 1
 \end{array}\right]$
 
