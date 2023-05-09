@@ -121,7 +121,7 @@ $\begin{aligned} \hat{\mathbf{C}}= & \mathbf{c}_1 \alpha_1 \\ & +\mathbf{c}_2 \a
 $$T_i=\exp \left(-\sum_{j=1}^{i-1} \sigma_i \delta_i\right)$$表示前 $\mathrm{i}-1$ 个位置累积的透明度， $\alpha_i$ 表示第 $\mathrm{i}$ 个位置的不透明度， $c_i$ 是第 $\mathrm{i}$ 个采样点预测出来的颜色，最终成像点的颜色就是根据每个点的颜色贡献 (不透明度) 的叠加，MLP 实现的功能就是预测每个点的 $c$ 和 $\sigma$ 。这其实也解释了为什么颜色的预测值输出与视角方向有关 (view-dependent)，在不同的视角观察物体，对于同一个物体其在空间中的位置是固定的，也就是体密度只与位置有关系（采样点的坐标已经统一到世界坐标系下)，而不同的视角代表着不同的光线，当光线方向改变时，成像的颜色值取决于经过这条光线上的物体，而不同光线经过的物体显然是不一致的。
 
 $\hat{\mathbf{C}} = \mathbf{c}_1 \alpha_1  +\mathbf{c}_2 \alpha_2\left(1-\alpha_1\right)+\mathbf{c}_3 \alpha_3\left(1-\alpha_1\right)\left(1-\alpha_2\right)+.... +$  
-$\mathbf{c}_n \alpha_n\left(1-\alpha_1\right)\left(1-\alpha_2\right)\left(1-\alpha_{n-1}\right)$
+$\mathbf{c}_n \alpha_n$
 
 
 # Training
