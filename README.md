@@ -90,10 +90,26 @@ $$
 用一系列的点模拟一条光线， 一条光线穿过一个像素，也就是说对一条光线上的每个点，都需要经过一次MLP，在文中提到一条 光线粗采样64 个点那么这 64 个点都会经过MLP，也就是会输出 64 个 $\sigma$ ，然后再加入 $\gamma(d)$ ， 注意对这 64 个点来说它们都是处在同一条光线上，所以每个点的 $\gamma(d)$ 都是一样的，然后得到 64 个点对应预测的 rgb 值。
 
 ###第四步 体渲染
+输入: 一条光线上的 $c(r, g, b), \sigma$ 输出: 渲染后的 RGB 值
+在传统的体渲染方法中，通过吸收发射模型进行光强的计算:
+$$
+I(D)=I_0 T(D)+\int_0^D g(s) T^{\prime}(s) ds
+$$
+其中 $T^{\prime}(s)=\exp \left(-\int_s^D \tau(x) d x\right)$ ，这一项被称为透明度，吸收发射模型等式第一项表示来自背景的光，乘以空间的透明度，这一部分表示光照经过介质后被吸收剩下的光强，第二项是源项 $\mathrm{g}$ （s）(表示介质通过外部照明的发射或反射增加的光）乘以位置 $\mathrm{s}$ 到眼晴位置 $D$ 的透明度（即 $\left.T^{\prime}(s)\right)$ 在每个位置 $\mathbf{s}$ 贡献的积分 (注意这个思想，我们使用一系列的点模拟一条光线，那么每个 点都有它的属性) 。在 NeRF 中吸收发射模型等式第一项视作背景光，忽略不计，通过坐标换算 之后得到：
+$$
+I(0)=\int_0^{\infty} g(s) T^{\prime}(0, s) d s=\int_0^{\infty} T^{\prime}(0, t) \tau(t) c(t) d t
+$$
+其中 $T^{\prime}(0, t)=\exp \left(-\int_0^t \tau(x) d x\right)$
+那么 $\sigma(r(t))$ 可以表示在这条射线上， $t$ 位置的体积密度（也就是体密度，预测出来的 $\sigma$ ）， $c(r(t), d)$ 就可以表示在这条射线上， $t$ 位置 $d$ 方向的光强。再考虑到不是每个位置上都有介质， 取了介质的边界平面 $t_n, t_f$ ，最终得到论文中的公式:
+$$
+C(r)=\int_{t_n}^{t_f} T(t) \sigma(r(t)) c(r(t), d) d t ; \int T(t)=\exp \left(-\int_{t^n}^t \sigma(r(s)) d s\right), r(t)=o+t d
+$$
 
- 输入：一条光线上的 <span class="ztext-math" data-eeimg="1" data-tex="c(r,g,b),\sigma">c(r,g,b),\sigma</span>                  输出：渲染后的 RGB 值</p><p data-pid="_OG4M6RL">在传统的体渲染方法[2]中，通过吸收发射模型进行光强的计算：</p><p data-pid="pIIpUeXs"><span class="ztext-math" data-eeimg="1" data-tex=" I(D) = I_0T(D) + ∫^D_0g(s)T^{&#39;}(s)ds "> I(D) = I_0T(D) + ∫^D_0g(s)T^{&#39;}(s)ds </span> </p><p data-pid="bZvjLicZ">其中 <span class="ztext-math" data-eeimg="1" data-tex="T^{&#39;}(s) = exp(-∫^D_s\tau(x)dx)">T^{&#39;}(s) = exp(-∫^D_s\tau(x)dx)</span>，这一项被称为透明度，吸收发射模型等式第一项表示来自背景的光，乘以空间的透明度，这一部分表示<b>光照经过介质后被吸收剩下的光强</b>，第二项是源项 g（s)（表示介质通过外部照明的发射或反射增加的光）乘以位置 s 到眼睛位置 D 的透明度（即 <span class="ztext-math" data-eeimg="1" data-tex="T^{&#39;}(s)">T^{&#39;}(s)</span>）在<b>每个位置 s 贡献的积分</b>（注意这个思想，我们使用一系列的点模拟一条光线，那么每个点都有它的属性）。在 NeRF 中吸收发射模型等式第一项视作背景光，忽略不计，通过坐标换算之后得到：</p><p data-pid="V-eNyeLk">​                                     <span class="ztext-math" data-eeimg="1" data-tex="I(0)=∫_0^∞g(s)T^{′}(0,s)ds=∫_0^∞T^{′}(0,t)τ(t)c(t)dt ">I(0)=∫_0^∞g(s)T^{′}(0,s)ds=∫_0^∞T^{′}(0,t)τ(t)c(t)dt </span>， </p><p data-pid="2woAClyB">​                                                  
 
 
+# Training
+
+ 
 
 ![llff](https://github.com/PatrioticDedicated/Result/blob/main/gif/llff.gif)
 ![lego](https://user-images.githubusercontent.com/61340340/236772533-a7d382ab-2155-47f1-8c57-87efa8949ec2.gif)
