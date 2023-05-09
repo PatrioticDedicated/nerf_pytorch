@@ -98,7 +98,7 @@ $$
 $C(r)=\int_{t_n}^{t_f} T(t) \sigma(r(t)) c(r(t), d) dt ; \int T(t)=\exp \left(-\int_{t^n}^t \sigma(r(s)) ds\right), r(t)=o + td$
 由于没有办法对连续对每个点进行采样得到积分值，因此引入了它的离散形式，把区间进行划分再进行采样：
 
-$$C(r)=\sum_{i=1}^N T_i\left(1-\exp \left(-\sigma_i \delta_i\right)\right) c_i, where T_i=\exp \left(-\sum_{j=1}^{i-1} \sigma_i \delta_i\right)$$
+$$C(r)=\sum_{i=1}^N T_i\left(1-\exp \left(-\sigma_i \delta_i\right)\right) c_i    where  T_i=\exp \left(-\sum_{j=1}^{i-1} \sigma_i \delta_i\right)$$
 
 其中 $t_i \sim U\left[t_n+\frac{i-1}{N}\left(t_f-t_n\right), t_n+\frac{i}{N}\left(t_f-t_n\right)\right], \delta_i=t_{i+1}-t_i$ ，在这里对离散化的公 式作一个解释， $T_i, c_i$ 都是和连续积分公式中采用一致的形式，即透明度和光强，而 $1-\exp \left(-\sigma_i \delta_i\right)$ 则来源于Max 的体渲染论文[2]， $\sigma$ 的含义为体密度，也被称为不透明度或消光 系数，实际上不透明度的定义为 $\alpha=1-T(s)=1-\exp \left(-\int_0^s \tau(t) d t\right)$ (即1 - 透明度)， 当划分的区间足够小时，可以得到 $\alpha=1-\exp (-\tau s)$ ，其中 $s=\delta, \tau=\sigma$ 。
 
