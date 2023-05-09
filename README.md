@@ -14,7 +14,7 @@ Input: coordinates$\![]https://latex.codecogs.com/svg.image?x(x,y,z)\$ in space,
 Mapping: is a parameter of the networ
 Intermediate output: color, volume density
 Final output: The volume is rendered to get an RGB image$\x,y$
-$\sqrt{3x-1}+(1+x)^2$
+$\sqrt{3x-1}+(1+x)^2$  $\x$
 
 
 ![llff](https://github.com/PatrioticDedicated/Result/blob/main/gif/llff.gif)
