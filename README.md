@@ -10,9 +10,9 @@ The code of [NeRF](https://arxiv.org/pdf/2003.08934.pdf)(Neural Radiance Fields)
 
 # Tutorial
 NeRF uses an MLP to represent a static scene (implicit reconstruction). The input is spatial coordinates and viewing Angle, and the output is color and volume density. After volume rendering, a composite image from a new perspective can be obtained.  
-Input: coordinates $x(x,y,z)$ in space, camera angle direction $d(\theta,\phi )$
-Mapping: is a parameter of the networ
-Intermediate output: color, volume density
+Input: coordinates $x(x,y,z)$ in space, camera angle direction $d(\theta,\phi )$  
+Mapping: is a parameter of the networ  
+Intermediate output: color, volume density  
 Final output: The volume is rendered to get an RGB image 
 
 
