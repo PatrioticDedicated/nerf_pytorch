@@ -98,11 +98,11 @@ $$
 $C(r)=\int_{t_n}^{t_f} T(t) \sigma(r(t)) c(r(t), d) dt ; \int T(t)=\exp \left(-\int_{t^n}^t \sigma(r(s)) ds\right), r(t)=o + td$
 由于没有办法对连续对每个点进行采样得到积分值，因此引入了它的离散形式，把区间进行划分再进行采样：
 
-$$C(r)=\sum_{i=1}^N T_i\left(1-\exp \left(-\sigma_i \delta_i\right)\right) c_i \\where\\T_i=\exp \left(-\sum_{j=1}^{i-1} \sigma_i \delta_i\right)$$
+$$C(r)=\sum_{i=1}^N T_i\left(1-\exp \left(-\sigma_i \delta_i\right)\right) c_i $sapce$ where\\T_i=\exp \left(-\sum_{j=1}^{i-1} \sigma_i \delta_i\right)$$
 
-其中 $t_i \sim U\left[t_n+\frac{i-1}{N}\left(t_f-t_n\right), t_n+\frac{i}{N}\left(t_f-t_n\right)\right], \delta_i=t_{i+1}-t_i$, $T_i, c_i$ 都是和连续积分公式中采用一致的形式，即透明度和光强，而 $1-\exp \left(-\sigma_i \delta_i\right)$ 则来源于Max 的体渲染论文[2]， $\sigma$ 的含义为体密度，也被称为不透明度或消光 系数，实际上不透明度的定义为 $\alpha=1-T(s)=1-\exp \left(-\int_0^s \tau(t) d t\right)$ (即1 - 透明度)， 当划分的区间足够小时，可以得到 $\alpha=1-\exp (-\tau s)$ ，其中 $s=\delta, \tau=\sigma$ 。
+其中 $t_i \sim U\left[t_n+\frac{i-1}{N}\left(t_f-t_n\right), t_n+\frac{i}{N}\left(t_f-t_n\right)\right], \delta_i=t_{i+1}-t_i$, $T_i, c_i$ 都是和连续积分公式中采用一致的形式，即透明度和光强，而 $1-\exp \left(-\sigma_i \delta_i\right)$中， $\sigma$ 的含义为体密度，也被称为不透明度或消光 系数，实际上不透明度的定义为 $\alpha=1-T(s)=1-\exp \left(-\int_0^s \tau(t) d t\right)$ (即1 - 透明度), 当划分的区间足够小时，可以得到 $\alpha=1-\exp (-\tau s)$ ，其中 $s=\delta, \tau=\sigma$ 。
 
-除此以外，对于离散化的体洹染公式还有另一种理解，注意到在这个吸收发射模型中我们一直用的 是光强 $C$ 这个概念，实际上我们人眼看到的是颜色 $C$ ，在此处个人也有一些疑惑关于两者的联系， 但在这个模型中我们可以认为光强 $C$ 进入人眼所看到的是颜色（作一个这样的理解，从人眼或者说相机出发一条光线经过一段具有某种透明度的物体后击中了某个不透明的物体，这个物体的不透 明度 $\alpha$ ，也就是光线终止在这点的概率，那么眼睛 “看到“ 的就是该物体的颜色 $C$，也因此可以认为透明度是光线穿过这点的概率，不透明度是在这点击中粒子终止的概率) 如果将 $C$ 表示为颜 色，那么论文中离散化的体渲染公式我们可以得到以下的理解:
+>除此以外，对于离散化的体洹染公式还有另一种理解，注意到在这个吸收发射模型中我们一直用的 是光强 $C$ 这个概念，实际上我们人眼看到的是颜色 $C$ ，在此处个人也有一些疑惑关于两者的联系， 但在这个模型中我们可以认为光强 $C$ 进入人眼所看到的是颜色（作一个这样的理解，从人眼或者说相机出发一条光线经过一段具有某种透明度的物体后击中了某个不透明的物体，这个物体的不透 明度 $\alpha$ ，也就是光线终止在这点的概率，那么眼睛 “看到“ 的就是该物体的颜色 $C$，也因此可以认为透明度是光线穿过这点的概率，不透明度是在这点击中粒子终止的概率) 如果将 $C$ 表示为颜 色，那么论文中离散化的体渲染公式我们可以得到以下的理解:
 
 $$
 C(r)=\sum_{i=1}^N T_i \alpha c_i ; T_i=\exp \left(-\sum_{j=1}^{i-1} \sigma_i \delta_i\right), \alpha=\left(1-\exp \left(-\sigma_i \delta_i\right)\right)
