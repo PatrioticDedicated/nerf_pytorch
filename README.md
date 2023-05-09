@@ -131,6 +131,7 @@ Please see each subsection for training on different datasets. Available trainin
 * Your own data (Forward-Facing/360 inward-facing)
 
 ## blender
+
 python train.py \
    --dataset_name blender \
    --root_dir $BLENDER_DIR \
@@ -141,6 +142,7 @@ python train.py \
    --exp_name exp
 
 ## llff
+
 python train.py \
    --dataset_name llff \
    --root_dir $LLFF_DIR \
@@ -170,6 +172,7 @@ Example of fern scene using pretrained model:
 ![llff](https://github.com/PatrioticDedicated/Result/blob/main/gif/llff.gif)
 
 # Mesh
+
 Use .py to create
 ![mesh](https://github.com/PatrioticDedicated/nerf_pytorch/assets/61340340/9b419d19-c593-47b5-974f-d519f1df792e)
 
