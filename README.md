@@ -92,18 +92,14 @@ $$
 ### 第四步 体渲染
 输入: 一条光线上的 $c(r, g, b), \sigma$ 输出: 渲染后的 RGB 值
 在传统的体渲染方法中，通过吸收发射模型进行光强的计算:
-$$
-I(D)=I_0 T(D)+\int_0^D g(s) T^{\prime}(s) ds
-$$
+$I(0)=\int_0^{\infty} g(s) T^{\prime}(0, s) d s=\int_0^{\infty} T^{\prime}(0, t) \tau(t) c(t) dt$
 其中 $T^{\prime}(s)=\exp \left(-\int_s^D \tau(x) d x\right)$ ，这一项被称为透明度，吸收发射模型等式第一项表示来自背景的光，乘以空间的透明度，这一部分表示光照经过介质后被吸收剩下的光强，第二项是源项 $\mathrm{g}$ （s）(表示介质通过外部照明的发射或反射增加的光）乘以位置 $\mathrm{s}$ 到眼晴位置 $D$ 的透明度（即 $\left.T^{\prime}(s)\right)$ 在每个位置 $\mathbf{s}$ 贡献的积分 (注意这个思想，我们使用一系列的点模拟一条光线，那么每个 点都有它的属性) 。在 NeRF 中吸收发射模型等式第一项视作背景光，忽略不计，通过坐标换算 之后得到：
 $$
 I(0)=\int_0^{\infty} g(s) T^{\prime}(0, s) d s=\int_0^{\infty} T^{\prime}(0, t) \tau(t) c(t) d t
 $$
 其中 $T^{\prime}(0, t)=\exp \left(-\int_0^t \tau(x) d x\right)$
 那么 $\sigma(r(t))$ 可以表示在这条射线上， $t$ 位置的体积密度（也就是体密度，预测出来的 $\sigma$ ）， $c(r(t), d)$ 就可以表示在这条射线上， $t$ 位置 $d$ 方向的光强。再考虑到不是每个位置上都有介质， 取了介质的边界平面 $t_n, t_f$ ，最终得到论文中的公式:
-$$
-C(r)=\int_{t_n}^{t_f} T(t) \sigma(r(t)) c(r(t), d) d t ; \int T(t)=\exp \left(-\int_{t^n}^t \sigma(r(s)) d s\right), r(t)=o+t d
-$$
+$C(r)=\int_{t_n}^{t_f} T(t) \sigma(r(t)) c(r(t), d) d t ; \int T(t)=\exp \left(-\int_{t^n}^t \sigma(r(s)) d s\right), r(t)=o+t d$
 
 
 
