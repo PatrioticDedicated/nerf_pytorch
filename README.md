@@ -21,9 +21,7 @@ Final output: The volume is rendered to get an RGB image
 
 ## NeRF 实现过程
 ### 第一步 光线的生成
-$$
-\text { 输入：一张RGB图像 输出：图像每个像素的 } o(x, y, z), d(x, y, z) \text { 以及由 } o, d \text { 得到的 } x(x, y, z)
-$$
+$\text { 输入：一张RGB图像 输出：图像每个像素的 } o(x, y, z), d(x, y, z) \text { 以及由 } o, d \text { 得到的 } x(x, y, z)$
 
 ![llff](https://github.com/PatrioticDedicated/Result/blob/main/gif/llff.gif)
 ![lego](https://user-images.githubusercontent.com/61340340/236772533-a7d382ab-2155-47f1-8c57-87efa8949ec2.gif)
