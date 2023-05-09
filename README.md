@@ -124,7 +124,7 @@ $T_i=\exp \left(-\sum_{j=1}^{i-1} \sigma_i \delta_i\right)$表示前 $\mathrm{i}
 # Training
 
 ![11](https://latex.codecogs.com/svg.latex?{x_{a}}^{b})
- 
+ ![22](https://latex.codecogs.com/png.image?\dpi{110}{x_{a}}^{b})
 
 ![llff](https://github.com/PatrioticDedicated/Result/blob/main/gif/llff.gif)
 ![lego](https://user-images.githubusercontent.com/61340340/236772533-a7d382ab-2155-47f1-8c57-87efa8949ec2.gif)
