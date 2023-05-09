@@ -30,7 +30,7 @@ MLP的输入是一系列空间坐标的点 $x(x, y, z)$ ，这些点同时具有
 图像坐标系：表示输入图片的二维坐标
 
 其中不同坐标系下的坐标有以下的转换关系：相机中的坐标 $\left[X_c, Y_c, Z_c\right]^T$ 和三维世界的坐标 $[X, Y, Z]^T$
-$
+$$
 \left[\begin{array}{l}
 X_c \\
 Y_c \\
@@ -47,24 +47,8 @@ Y \\
 Z \\
 1
 \end{array}\right]
-$
-等式右边的矩阵是一个仿射变换矩阵，用于从世界坐标转换到相机坐标，而在 NeRF 中会提供其 逆矩阵用于从相机坐标转换到统一的世界坐标。而二维图片的坐标 $[x, y]^T$ 和相机坐标系的坐标转 换关系为:
-$
-\left[\begin{array}{c}
-x \\
-y \\
-1
-\end{array}\right]=\left[\begin{array}{ccc}
-f_x & 0 & c_x \\
-0 & f_y & c_y \\
-0 & 0 & 1
-\end{array}\right]\left[\begin{array}{l}
-X_c \\
-Y_c \\
-Z_c
-\end{array}\right]
-$
-等式右边的矩阵指相机的内参，包含焦距以及图像中心点的坐标，对于相同的数据集内参矩阵一般 是固定的。
+$$
+
 
 
 
