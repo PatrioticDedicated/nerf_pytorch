@@ -87,19 +87,22 @@ $$
 输入: $\gamma(x), \gamma(d)$ 输出: $c(r, g, b), \sigma$
 ![MLP](https://user-images.githubusercontent.com/61340340/237011945-ce4f502a-55f6-45e0-ade3-ac74dea45240.PNG)
 
-用一系列的点模拟一条光线， 一条光线穿过一个像素，也就是说对一条光线上的每个点，都需要经过一次MLP，在文中提到一条 光线粗采样64 个点那么这 64 个点都会经过MLP，也就是会输出 64 个 $\sigma$ ，然后再加入 $\gamma(d)$ ， 注意对这 64 个点来说它们都是处在同一条光线上，所以每个点的 $\gamma(d)$ 都是一样的，然后得到 64 个点对应预测的 rgb 值。
+用一系列的点模拟一条光线，一条光线穿过一个像素，也就是说对一条光线上的每个点，都需要经过一次MLP，在文中提到一条 光线粗采样64 个点那么这 64 个点都会经过MLP，也就是会输出 64 个 $\sigma$ ，然后再加入 $\gamma(d)$ ， 注意对这 64 个点来说它们都是处在同一条光线上，所以每个点的 $\gamma(d)$ 都是一样的，然后得到 64 个点对应预测的 rgb 值。
 
 ### 第四步 体渲染
 输入: 一条光线上的 $c(r, g, b), \sigma$ 输出: 渲染后的 RGB 值
-在传统的体渲染方法中，通过吸收发射模型进行光强的计算:
-$I(0)=\int_0^{\infty} g(s) T^{\prime}(0, s) d s=\int_0^{\infty} T^{\prime}(0, t) \tau(t) c(t) dt$
-其中 $T^{\prime}(s)=\exp \left(-\int_s^D \tau(x) d x\right)$ ，这一项被称为透明度，吸收发射模型等式第一项表示来自背景的光，乘以空间的透明度，这一部分表示光照经过介质后被吸收剩下的光强，第二项是源项 $\mathrm{g}$ （s）(表示介质通过外部照明的发射或反射增加的光）乘以位置 $\mathrm{s}$ 到眼晴位置 $D$ 的透明度（即 $\left.T^{\prime}(s)\right)$ 在每个位置 $\mathbf{s}$ 贡献的积分 (注意这个思想，我们使用一系列的点模拟一条光线，那么每个 点都有它的属性) 。在 NeRF 中吸收发射模型等式第一项视作背景光，忽略不计，通过坐标换算 之后得到：
-$$
-I(0)=\int_0^{\infty} g(s) T^{\prime}(0, s) d s=\int_0^{\infty} T^{\prime}(0, t) \tau(t) c(t) d t
-$$
-其中 $T^{\prime}(0, t)=\exp \left(-\int_0^t \tau(x) d x\right)$
-那么 $\sigma(r(t))$ 可以表示在这条射线上， $t$ 位置的体积密度（也就是体密度，预测出来的 $\sigma$ ）， $c(r(t), d)$ 就可以表示在这条射线上， $t$ 位置 $d$ 方向的光强。再考虑到不是每个位置上都有介质， 取了介质的边界平面 $t_n, t_f$ ，最终得到论文中的公式:
+
+光线的颜色值公式:
 $C(r)=\int_{t_n}^{t_f} T(t) \sigma(r(t)) c(r(t), d) d t ; \int T(t)=\exp \left(-\int_{t^n}^t \sigma(r(s)) d s\right), r(t)=o+t d$
+由于没有办法对连续对每个点进行采样得到积分值，因此引入了它的离散形式，把区间进行划分再进行采样：
+$C(r)=\sum_{i=1}^N T_i\left(1-\exp \left(-\sigma_i \delta_i\right)\right) c_i$, where $T_i=\exp \left(-\sum_{j=1}^{i-1} \sigma_i \delta_i\right)$
+其中 $t_i \sim U\left[t_n+\frac{i-1}{N}\left(t_f-t_n\right), t_n+\frac{i}{N}\left(t_f-t_n\right)\right], \delta_i=t_{i+1}-t_i$ ，在这里对离散化的公 式作一个解释， $T_i, c_i$ 都是和连续积分公式中采用一致的形式，即透明度和光强，而 $1-\exp \left(-\sigma_i \delta_i\right)$ 则来源于Max 的体渲染论文[2]， $\sigma$ 的含义为体密度，也被称为不透明度或消光 系数，实际上不透明度的定义为 $\alpha=1-T(s)=1-\exp \left(-\int_0^s \tau(t) d t\right)$ (即1 - 透明度)， 当划分的区间足够小时，可以得到 $\alpha=1-\exp (-\tau s)$ ，其中 $s=\delta, \tau=\sigma$ 。
+
+除此以外，对于离散化的体洹染公式还有另一种理解，注意到在这个吸收发射模型中我们一直用的 是光强C 这个概念，实际上我们人眼看到的是颜色 $C$ ，在此处个人也有一些疑惑关于两者的联系， 但在这个模型中我们可以认为光强 $C$ 进入人眼所看到的是颜色（作一个这样的理解，从人眼或者说相机出发一条光线经过一段具有某种透明度的物体后击中了某个不透明的物体，这个物体的不透 明度 $\alpha$ ，也就是光线终止在这点的概率，那么眼睛 “看到“ 的就是该物体的颜色 C，也因此可以认 为透明度是光线穿过这点的概率，不透明度是在这点击中粒子终止的概率) 如果将 $C$ 表示为颜 色，那么论文中离散化的体渲染公式我们可以得到以下的理解:
+$$
+C(r)=\sum_{i=1}^N T_i \alpha c_i ; T_i=\exp \left(-\sum_{j=1}^{i-1} \sigma_i \delta_i\right), \alpha=\left(1-\exp \left(-\sigma_i \delta_i\right)\right)
+$$
+
 
 
 
