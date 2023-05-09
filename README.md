@@ -13,7 +13,7 @@ NeRF uses an MLP to represent a static scene (implicit reconstruction). The inpu
 Input: coordinates$![]https://latex.codecogs.com/svg.image?x(x,y,z)$ in space, camera Angle direction
 Mapping: is a parameter of the networ
 Intermediate output: color, volume density
-Final output: The volume is rendered to get an RGB image
+Final output: The volume is rendered to get an RGB image$x,y$
 
 ![llff](https://github.com/PatrioticDedicated/Result/blob/main/gif/llff.gif)
 ![lego](https://user-images.githubusercontent.com/61340340/236772533-a7d382ab-2155-47f1-8c57-87efa8949ec2.gif)
