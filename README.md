@@ -128,7 +128,7 @@ $$
 <img width="13%" src="https://github.com/PatrioticDedicated/nerf_pytorch/assets/61340340/7c91e0cf-6f9c-4e5b-a2a5-68c27936562a" >表示前 $\mathrm{i}-1$ 个位置累积的透明度， $\alpha_i$ 表示第 $\mathrm{i}$ 个位置的不透明度， $c_i$ 是第 $\mathrm{i}$ 个采样点预测出来的颜色，最终成像点的颜色就是根据每个点的颜色贡献 (不透明度) 的叠加，MLP 实现的功能就是预测每个点的 $c$ 和 $\sigma$ 。这其实也解释了为什么颜色的预测值输出与视角方向有关 (view-dependent)，在不同的视角观察物体，对于同一个物体其在空间中的位置是固定的，也就是体密度只与位置有关系（采样点的坐标已经统一到世界坐标系下)，而不同的视角代表着不同的光线，当光线方向改变时，成像的颜色值取决于经过这条光线上的物体，而不同光线经过的物体显然是不一致的。
 
 
-# Training
+# :computer: Training
 
 Please see each subsection for training on different datasets. Available training datasets:
 * Blender (Realistic Synthetic 360)
@@ -157,7 +157,7 @@ python train.py \
    --lr_scheduler steplr --decay_step 10 20 --decay_gamma 0.5 \
    --exp_name exp
 
-# Testing
+# :camera: Testing
 
 Use test.py to create the whole sequence of moving views. E.g.
 
@@ -178,7 +178,7 @@ It will create folder results/{dataset_name}/{scene_name} and run inference on a
 
 <img width="30%" src="https://github.com/PatrioticDedicated/Result/blob/main/gif/llff.gif" >
 
-# Mesh
+# :jack_o_lantern: Mesh
 
 Use .py to create
 
