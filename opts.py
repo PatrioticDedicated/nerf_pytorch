@@ -4,16 +4,14 @@ def get_opts():
     parser = argparse.ArgumentParser()
 
     parser.add_argument('--root_dir', type=str,
-                        #default='./data/nerf_example_data/nerf_llff_data/fern',
                         default='./data/nerf_example_data/nerf_synthetic/lego',
                         help='root directory of dataset')
 
     parser.add_argument('--dataset_name', type=str, default='blender',
                         choices=['blender', 'llff'],
                         help='which dataset to train/val')
-    # parser.add_argument('--img_wh', nargs="+", type=int, default=[504, 378],
-    #                     help='resolution (img_w, img_h) of the image')
-    parser.add_argument('--img_wh', nargs="+", type=int, default=[400, 400],
+    
+    parser.add_argument('--img_wh', nargs="+", type=int, default=[800, 800],
                         help='resolution (img_w, img_h) of the image')
     parser.add_argument('--spheric_poses', default=True, action="store_true",
                         help='whether images are taken in spheric poses (for llff)')
