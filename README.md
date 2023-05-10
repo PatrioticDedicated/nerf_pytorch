@@ -166,21 +166,21 @@ python test.py \
     --dataset_name blender --scene_name lego \
     --img_wh 400 400 --N_importance 64 --ckpt_path $CKPT_PATH
  ```
-IMPORTANT : Don't forget to add --spheric_poses if the model is trained under --spheric setting!
+IMPORTANT : Don't forget to add `--spheric_poses` if the model is trained under `--spheric` setting!
 
-It will create folder results/{dataset_name}/{scene_name} and run inference on all test data, finally create a gif out of them.  
+It will create folder `results/{dataset_name}/{scene_name}` and run inference on all test data, finally create a gif out of them.  
 
-:tulip: `Example of lego scene using pretrained model` 
+:heartpulse: `Example of lego scene using pretrained model` 
 
 <img width="30%" src="https://user-images.githubusercontent.com/61340340/236772533-a7d382ab-2155-47f1-8c57-87efa8949ec2.gif" >
 
-:excavator: `Example of fern scene using pretrained model`
+:tulip: `Example of fern scene using pretrained model`
 
 <img width="30%" src="https://github.com/PatrioticDedicated/Result/blob/main/gif/llff.gif" >
 
 # :jack_o_lantern: Mesh
 
-Use `Mesh_Color.py` to create
+Use `Mesh_Color.py` to  reconstruct colored mesh
 
 <img width="35%" src="https://github.com/PatrioticDedicated/nerf_pytorch/assets/61340340/9b419d19-c593-47b5-974f-d519f1df792e" >
 
