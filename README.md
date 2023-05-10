@@ -1,6 +1,6 @@
 NeRF Refactoring
 =====
-The code of [NeRF](https://arxiv.org/pdf/2003.08934.pdf)(Neural Radiance Fields) is restructured according to pytorch_template and has a clear directory structure
+The code of [NeRF](https://arxiv.org/pdf/2003.08934.pdf)(Neural Radiance Fields) is restructured according to pytorch_template and has a clear directory structure.
 
 # :muscle: Features
 * Clear folder structure which is suitable for many deep learning projects.
