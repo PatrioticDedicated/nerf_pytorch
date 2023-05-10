@@ -171,11 +171,11 @@ IMPORTANT : Don't forget to add --spheric_poses if the model is trained under --
 
 It will create folder results/{dataset_name}/{scene_name} and run inference on all test data, finally create a gif out of them.  
 
-## Example of lego scene using pretrained model 
+## :tulip: Example of lego scene using pretrained model 
 
 <img width="30%" src="https://user-images.githubusercontent.com/61340340/236772533-a7d382ab-2155-47f1-8c57-87efa8949ec2.gif" >
 
-## Example of fern scene using pretrained model:
+## :excavator: Example of fern scene using pretrained model
 
 <img width="30%" src="https://github.com/PatrioticDedicated/Result/blob/main/gif/llff.gif" >
 
