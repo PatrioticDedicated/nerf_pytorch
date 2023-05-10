@@ -178,7 +178,7 @@ It will create folder `results/{dataset_name}/{scene_name}` and run inference on
 
 <img width="30%" src="https://github.com/PatrioticDedicated/Result/blob/main/gif/llff.gif" >
 
-# :jack_o_lantern: Mesh
+# :unlock: :key: Mesh
 
 Use `Mesh_Color.py` to  reconstruct colored mesh
 
