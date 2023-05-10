@@ -161,12 +161,12 @@ python train.py \
 # :camera: Testing
 
 Use test.py to create the whole sequence of moving views. E.g.
-
-python eval.py \
-   --root_dir $BLENDER \
-   --dataset_name blender --scene_name lego \
-   --img_wh 400 400 --N_importance 64 --ckpt_path $CKPT_PATH
-   
+```
+python test.py \
+    --root_dir $BLENDER \
+    --dataset_name blender --scene_name lego \
+    --img_wh 400 400 --N_importance 64 --ckpt_path $CKPT_PATH
+ ```
 IMPORTANT : Don't forget to add --spheric_poses if the model is trained under --spheric setting!
 
 It will create folder results/{dataset_name}/{scene_name} and run inference on all test data, finally create a gif out of them.  
@@ -181,7 +181,7 @@ It will create folder results/{dataset_name}/{scene_name} and run inference on a
 
 # :jack_o_lantern: Mesh
 
-Use .py to create
+Use Mesh_color.py to create
 
 <img width="35%" src="https://github.com/PatrioticDedicated/nerf_pytorch/assets/61340340/9b419d19-c593-47b5-974f-d519f1df792e" >
 
