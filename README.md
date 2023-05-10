@@ -80,8 +80,9 @@ $$
 ### 第二步 位置编码
 输入: 一条光线上的 $x(x, y, z), d(x, y, z)$  
 
-输出: $\gamma(x), \gamma(d)$
-位置编码公式: $\gamma(p)=\left(\sin \left(2^0 \pi p\right), \cos \left(2^0 \pi p\right), \ldots, \sin \left(2^{L-1} \pi p\right), \cos \left(2^{L-1} \pi p\right)\right)$ 这里 应该关注维度的变化： $R->R^{2 L}$ ，需要注意在上一步提到模拟一条光线时用的是一系列离散的点，那么对应这些点的坐标都是不同的（64个），但单位方向 $d(x, y, z)$ 对于这条光线上的点来说都是相同的，对每一个点进行位置编码，原来是 3 维， L 取 10，那么最终的维度就是 $3 \times 2 \times 10=60$ 维，同理单位方向向量维度也是 3 ， L 取 4，最终是 24 维，这就是论文中 MLP 网络上提到的 $\gamma(x) 60$ 和 $\gamma(d) 24$ 。
+输出: $\gamma(x), \gamma(d)$  
+
+位置编码公式: $\gamma(p)=\left(\sin \left(2^0 \pi p\right), \cos \left(2^0 \pi p\right), \ldots, \sin \left(2^{L-1} \pi p\right), \cos \left(2^{L-1} \pi p\right)\right)$ 其中，维度的变化： $R->R^{2 L}$ ，需要注意在上一步提到模拟一条光线时用的是一系列离散的点，那么对应这些点的坐标都是不同的（64个），但单位方向 $d(x, y, z)$ 对于这条光线上的点来说都是相同的，对每一个点进行位置编码，原来是 3 维， L 取 10，那么最终的维度就是 $3 \times 2 \times 10=60$ 维，同理单位方向向量维度也是 3 ， L 取 4，最终是 24 维，这就是论文中 MLP 网络上提到的 $\gamma(x) 60$ 和 $\gamma(d) 24$ 。
 
 <img width="70%" src="https://user-images.githubusercontent.com/61340340/237008128-7e28dab6-1f60-419a-b8a3-f141fc498ca2.jpg" >
 
