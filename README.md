@@ -177,9 +177,8 @@ Example of fern scene using pretrained model:
 
 Use .py to create
 
-<div align=center>
-<img width="50%" src="https://github.com/PatrioticDedicated/nerf_pytorch/assets/61340340/9b419d19-c593-47b5-974f-d519f1df792e" >
-</div>
+<img width="30%" src="https://github.com/PatrioticDedicated/nerf_pytorch/assets/61340340/9b419d19-c593-47b5-974f-d519f1df792e" >
+
 
 
 
