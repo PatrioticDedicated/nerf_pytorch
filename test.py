@@ -43,8 +43,7 @@ def get_opts():
     parser.add_argument('--chunk', type=int, default=32*1024*4,
                         help='chunk size to split the input to avoid OOM')
 
-    parser.add_argument('--ckpt_path', type=str,
-                        default='saved/models/Nerf/0504_110402/model_best.pth',
+    parser.add_argument('--ckpt_path', type=str, required=True,
                         help='pretrained checkpoint path to load')
 
     parser.add_argument('--save_depth', default=False, action="store_true",
