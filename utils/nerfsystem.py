@@ -22,7 +22,7 @@ class NeRFSystem():
         """Do batched inference on rays using chunk."""
         B = rays.shape[0]
         results = defaultdict(list)
-        for i in range(0, B, self.hparams.chunk):
+        for i in range(0, B, self.hparams.chunk, white_back):
             rendered_ray_chunks = render_rays(models,
                                   self.embeddings,
                                   rays[i:i + self.hparams.chunk],
@@ -32,7 +32,7 @@ class NeRFSystem():
                             self.hparams.noise_std,
                             self.hparams.N_importance,
                             self.hparams.chunk,
-                            white_back=True)
+                            white_back)
 
             for k, v in rendered_ray_chunks.items():
                 results[k] += [v]
