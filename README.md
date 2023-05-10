@@ -137,7 +137,7 @@ Please see each subsection for training on different datasets. Available trainin
 
 ## blender
 
-python train.py \
+>python train.py \
    --dataset_name blender \
    --root_dir $BLENDER_DIR \
    --N_importance 64 --img_wh 400 400 --noise_std 0 \
@@ -148,7 +148,7 @@ python train.py \
 
 ## llff
 
-python train.py \
+<python train.py \
    --dataset_name llff \
    --root_dir $LLFF_DIR \
    --N_importance 64 --img_wh 504 378 \
