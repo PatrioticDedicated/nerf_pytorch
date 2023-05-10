@@ -80,13 +80,14 @@ $$
 ### 第二步 位置编码
 输入: 一条光线上的 $x(x, y, z), d(x, y, z)$ 输出: $\gamma(x), \gamma(d)$
 位置编码公式: $\gamma(p)=\left(\sin \left(2^0 \pi p\right), \cos \left(2^0 \pi p\right), \ldots, \sin \left(2^{L-1} \pi p\right), \cos \left(2^{L-1} \pi p\right)\right)$ 这里 应该关注维度的变化： $R->R^{2 L}$ ，需要注意在上一步提到模拟一条光线时用的是一系列离散的点，那么对应这些点的坐标都是不同的（64个），但单位方向 $d(x, y, z)$ 对于这条光线上的点来说都是相同的，对每一个点进行位置编码，原来是 3 维， L 取 10，那么最终的维度就是 $3 \times 2 \times 10=60$ 维，同理单位方向向量维度也是 3 ， L 取 4，最终是 24 维，这就是论文中 MLP 网络上提到的 $\gamma(x) 60$ 和 $\gamma(d) 24$ 。
-![v2-83926be94a1f3f0876b0e4752f35eae2_r](https://user-images.githubusercontent.com/61340340/237008128-7e28dab6-1f60-419a-b8a3-f141fc498ca2.jpg)
 
+<img width="30%" src="https://user-images.githubusercontent.com/61340340/237008128-7e28dab6-1f60-419a-b8a3-f141fc498ca2.jpg" >
 
 ### 第三步 MLP预测
 输入: $\gamma(x), \gamma(d)$  
 输出: $c(r, g, b), \sigma$
-![MLP](https://user-images.githubusercontent.com/61340340/237011945-ce4f502a-55f6-45e0-ade3-ac74dea45240.PNG)
+
+<img width="30%" src="https://user-images.githubusercontent.com/61340340/237011945-ce4f502a-55f6-45e0-ade3-ac74dea45240.PNG" >
 
 用一系列的点模拟一条光线，一条光线穿过一个像素，也就是说对一条光线上的每个点，都需要经过一次MLP，在文中提到一条光线粗采样64 个点那么这 64 个点都会经过MLP，也就是会输出 64 个 $\sigma$ ，然后再加入 $\gamma(d)$ ， 注意对这 64 个点来说它们都是处在同一条光线上，所以每个点的 $\gamma(d)$ 都是一样的，然后得到 64 个点对应预测的 rgb 值。
 
