@@ -21,8 +21,8 @@ NeRF uses an MLP to represent a static scene (implicit reconstruction). The inpu
 
 ## NeRF 实现过程
 ### :walking: 第一步 光线的生成
-输入：一张RGB图像  
-输出：图像每个像素的 $o(x, y, z)$, $d(x, y, z)$ 以及由 $o, d$ 得到的 $x(x, y, z)$
+`输入`：一张RGB图像  
+`输出`：图像每个像素的 $o(x, y, z)$, $d(x, y, z)$ 以及由 $o, d$ 得到的 $x(x, y, z)$
 MLP的输入是一系列空间坐标的点 $x(x, y, z)$ ，这些点同时具有相机视角属性，这一系列的点可以模拟出一条从相机发射出的光线。光线的生成过程如下:
 #### 1.1 坐标系的转换：在进行光线的生成之前，首先需要了解在 NeRF 中一些相关坐标概念:
 在NeRF中数据的处理涉及到三种坐标系:
